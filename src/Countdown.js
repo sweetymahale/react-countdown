@@ -1,10 +1,12 @@
-import * as React from "https://cdn.skypack.dev/react@17.0.1";
+import { useState, useEffect } from "react";
+import './style.css';
 
 export default function Countdown() {
-    const [days, setDays] = React.useState(0);
-    const [hours, setHours] = React.useState(0);
-    const [minutes, setMinutes] = React.useState(0);
-    const [seconds, setSeconds] = React.useState(0);
+    const [days, setDays] = useState(0);
+    const [hours, setHours] = useState(0);
+    const [minutes, setMinutes] = useState(0);
+    const [seconds, setSeconds] =
+        useState(0);
 
     const deadline = "December, 31, 2022";
 
@@ -17,7 +19,7 @@ export default function Countdown() {
         setSeconds(Math.floor((time / 1000) % 60));
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         const interval = setInterval(() => getTime(deadline), 1000);
 
         return () => clearInterval(interval);
